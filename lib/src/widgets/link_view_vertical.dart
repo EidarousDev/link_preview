@@ -83,7 +83,7 @@ class LinkViewVertical extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: radius == 0
                                     ? BorderRadius.zero
-                                    : const BorderRadius.only(
+                                    : hideTitle && hideBody ? BorderRadius.all(Radius.circular(radius ?? 12)) : const BorderRadius.only(
                                         topLeft: Radius.circular(12),
                                         topRight: Radius.circular(12),
                                       ),

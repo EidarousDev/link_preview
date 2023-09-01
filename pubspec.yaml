@@ -1,6 +1,6 @@
 name: link_preview
 description: A flutter package which will help you to show preview of the web url's with beautiful & completely customizable design.
-version: 0.0.2
+version: 0.0.3
 homepage:
 
 environment:
