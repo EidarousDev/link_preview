@@ -106,7 +106,12 @@ class AnyLinkPreview extends StatefulWidget {
   /// allows to build a custom [Widget] from the [Metadata] and [ImageProvider] fetched
   final Widget Function(BuildContext, Metadata, ImageProvider?)? itemBuilder;
 
-  AnyLinkPreview({
+  /// Set to true to hide the title from the preview card
+  final bool hideTitle;
+
+  /// Set to true to hide the body text from the preview card
+  final bool hideBody;
+  const AnyLinkPreview({
     Key? key,
     required this.link,
     this.cache = const Duration(days: 1),
@@ -130,10 +135,12 @@ class AnyLinkPreview extends StatefulWidget {
     this.onTap,
     this.previewHeight,
     this.urlLaunchMode = LaunchMode.platformDefault,
+    this.hideTitle = false,
+    this.hideBody = false,
   })  : itemBuilder = null,
         super(key: key);
 
-  AnyLinkPreview.builder({
+  const AnyLinkPreview.builder({
     Key? key,
     required this.link,
     required this.itemBuilder,
@@ -141,7 +148,7 @@ class AnyLinkPreview extends StatefulWidget {
     this.placeholderWidget,
     this.errorWidget,
     this.proxyUrl,
-    this.headers,
+    this.headers, required this.hideTitle, required this.hideBody,
   })  : titleStyle = null,
         bodyStyle = null,
         displayDirection = UIDirection.uiDirectionVertical,
@@ -375,6 +382,8 @@ class AnyLinkPreviewState extends State<AnyLinkPreview> {
               showMultiMedia: widget.showMultimedia,
               bgColor: widget.backgroundColor,
               radius: widget.borderRadius ?? 12,
+        hideTitle: widget.hideTitle,
+        hideBody: widget.hideBody,
             ),
     );
   }
